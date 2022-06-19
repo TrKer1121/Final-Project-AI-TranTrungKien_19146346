@@ -3,9 +3,9 @@ import tkinter as tk
 import numpy as np
 from tkinter import *
 from PIL import ImageTk, Image
-from turtle import right
-from tensorflow.keras.models import load_model, model_from_json
-from tensorflow.keras.preprocessing.image import load_img,img_to_array
+
+from tensorflow.keras.models import model_from_json
+from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.preprocessing import image
 
 
