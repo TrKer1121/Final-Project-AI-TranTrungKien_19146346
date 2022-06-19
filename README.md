@@ -9,4 +9,4 @@ MSSV: 19146346
 
 GVHD: PGS.TS Nguyễn Trường Thịnh
 
-Training on Kaggle: https://www.kaggle.com/trugkin/final-project-ai-trantrungkien-19146346
+Training và dataset trên Kaggle: https://www.kaggle.com/trugkin/final-project-ai-trantrungkien-19146346
