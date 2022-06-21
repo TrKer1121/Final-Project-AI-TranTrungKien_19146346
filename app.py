@@ -57,7 +57,7 @@ model = model_from_json(open("model/model_v3/model_arch_v3.json", "r").read())
 model.load_weights('model/model_v3/my_model_v3.h5')
 face_haar_cascade = cv2.CascadeClassifier('cascade/haarcascade_frontalface_default.xml')
 
-
+#Import file and recognition
 def UploadAction(event=None):
     filename = filedialog.askopenfilename()
     print('Selected:', filename)
@@ -133,40 +133,6 @@ def detect():
     cap.release()
     cv2.destroyAllWindows() 
 
-
-def detect():
-    cap = cv2.VideoCapture(0)
-    fourcc = cv2.VideoWriter_fourcc(*'XVID')
-    op = cv2.VideoWriter('videorec.mp4', fourcc, 9.0, (640, 480))
-    while cap.isOpened():
-        res, frame = cap.read()
-        height, width, channel = frame.shape
-        gray_image = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        faces = face_haar_cascade.detectMultiScale(gray_image)
-        try: 
-            for(x, y, w, h) in faces:
-                cv2.rectangle(frame, pt1=(x, y), pt2=(x + w, y + h), color=(0, 255, 0), thickness=2)
-                roi_gray = gray_image[y:y + h, x:x + w]
-                roi_gray = cv2.resize(roi_gray, (48, 48))
-                image_pixels = img_to_array(roi_gray)
-                image_pixels = np.expand_dims(image_pixels, axis=0)
-                image_pixels /= 255
-                predictions = model.predict(image_pixels)
-                max_index = np.argmax(predictions[0])
-                emotion_detection = ('BinhThuong', 'Buon', 'GianDu', 'NgacNhien', 'VuiVe')
-                emotion_prediction = emotion_detection[max_index]
-                cv2.putText(frame, emotion_prediction, (x+5, y-20), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
-        except:
-            pass
-        frame[0:int(height/20), 0:int(width)] = res
-        op.write(frame)
-        cv2.imshow('AI PROJECT - EMOTION DETECTION - TR.KIEN - DETECT & RECORD', frame)
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
-    op.release()
-    cap.release()
-    cv2.destroyAllWindows() 
-
 #Detect & record
 def detectRec():
     cap = cv2.VideoCapture(0)
@@ -225,6 +191,4 @@ but4.place(relx=0.5,rely=0.8, anchor= CENTER)
 but5=Button(window,padx=5,pady=5,width=30,bg='white',fg='red',relief=GROOVE,text='EXIT',command=exitt,font=('helvetica 15 bold'))
 but5.place(relx=0.5,rely=0.92, anchor= CENTER)
 
-
 window.mainloop()
-
