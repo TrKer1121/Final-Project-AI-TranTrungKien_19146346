@@ -1,4 +1,3 @@
-from email import contentmanager
 import cv2
 import tkinter as tk
 import numpy as np
@@ -10,7 +9,6 @@ from tensorflow.keras.models import model_from_json
 from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.preprocessing import image
 from tkinter import filedialog
-
 
 window = tk.Tk()
 window.geometry('850x430+370+170')
