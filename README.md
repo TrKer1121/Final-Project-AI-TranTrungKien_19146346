@@ -10,3 +10,5 @@ MSSV: 19146346
 GVHD: PGS.TS Nguyễn Trường Thịnh
 
 Training và dataset trên Kaggle: https://www.kaggle.com/trugkin/final-project-ai-trantrungkien-19146346
+
+Video kiểm tra chương trình: https://youtu.be/sL8wgltjUsI
